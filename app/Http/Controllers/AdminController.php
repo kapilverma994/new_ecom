@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -15,19 +17,29 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // dd(Hash::make('admin@123'));
+    //     // dd(Hash::make('admin@123'));
+    //     $time=DB::table('admins')->first();
+    //    //dd(Carbon::createFromFormat('Y-m-d H:i:s', $time->created_at)->format('Y-m-d'));
+  
+    //    // dd($time->created_at);
+
+    //    dd(Carbon::now()->format('Y-m-d')==Carbon::createFromFormat('Y-m-d H:i:s', $time->created_at)->format('Y-m-d'));
         return view('admin.login');
     }
     public function auth(Request $request){
        $email=$request->email;
        $password=$request->password;
-  $result=Admin::where(['email'=>$email,'password'=>$password])->first();
-if(isset($result->id)){
+  $result=Admin::where(['email'=>$email])->first();
+if($result){
+ if(Hash::check($password,$result->password)){
 $request->session()->put('ADMIN_LOGIN',TRUE);
 $request->session()->put('ADMIN_ID',$result->id);
 return redirect('admin/dashboard');
 }else{
-    return redirect()->back()->with('error','Invalid Details');
+    return redirect()->back()->with('error','Incorrect Password');
+}
+}else{
+    return redirect()->back()->with('error','Access Denied');
 }
     }
 

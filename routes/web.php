@@ -21,6 +21,11 @@ Route::get('/admin',[AdminController::class,'index']);
 Route::post('admin/auth',[AdminController::class,'auth'])->name('admin.login');
 Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/dashboard',[AdminController::class,'show']);
+    Route::get('admin/logout',function(){
+session()->forget('ADMIN_LOGIN');
+session()->forget('ADMIN_ID');
+return redirect('admin')->with('success','Logout Successfully');
+    })->name('admin.logout');
     
 });
 

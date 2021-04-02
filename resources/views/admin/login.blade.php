@@ -28,7 +28,8 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                    <h2> {{ config('app.name') }} </h2>
+                    <h1 class="h4 text-gray-900 mb-4">Login </h1>
                   </div>
                   <form class="user" action="{{route('admin.login')}}" method="post">
                     @csrf
@@ -63,6 +64,16 @@
   <script src="{{asset('admin_asset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('admin_asset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
   <script src="{{asset('admin_asset/js/ruang-admin.min.js')}}"></script>
+  <script>
+
+    $(document).ready(function(){
+    
+ setInterval(() => {
+   $(".custom").slideUp();
+ }, 2000);
+    
+    });
+    </script>
 </body>
 
 </html>

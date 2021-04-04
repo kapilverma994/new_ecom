@@ -9,17 +9,18 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="{{asset('admin_asset/img/logo/logo.png')}}" rel="icon">
-  <title>RuangAdmin - Dashboard</title>
+  <title>   @yield('title')</title>
   <link href="{{asset('admin_asset/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin_asset/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
   <link href="{{asset('admin_asset/css/ruang-admin.min.css')}}" rel="stylesheet">
+  <link href="{{asset('admin_asset/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('admin/dashboard')}}">
         <div class="sidebar-brand-icon">
           <img src="{{asset('admin_asset/img/logo/logo2.png')}}">
         </div>
@@ -27,7 +28,7 @@
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('admin/dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -43,10 +44,9 @@
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-         
-            <a class="collapse-item" href="alerts.html">Add Category</a>
-            <a class="collapse-item" href="buttons.html">View Category</a>
-           
+
+            <a class="collapse-item" href="{{route('category.create')}}">Add Category</a>
+            <a class="collapse-item" href="{{route('category.index')}}">View Category</a>
           </div>
         </div>
       </li>
@@ -54,13 +54,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
           aria-controls="collapseForm">
           <i class="fab fa-fw fa-wpforms"></i>
-          <span>Forms</span>
+          <span>Coupon</span>
         </a>
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Forms</h6>
-            <a class="collapse-item" href="form_basics.html">Form Basics</a>
-            <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
+
+            <a class="collapse-item" href="{{route('coupon.create')}}">Add Coupon</a>
+            <a class="collapse-item" href="{{route('coupon.index')}}">View Coupon</a>
           </div>
         </div>
       </li>
@@ -333,9 +333,19 @@
   <script src="{{asset('admin_asset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
   <script src="{{asset('admin_asset/js/ruang-admin.min.js')}}"></script>
   <script src="{{asset('admin_asset/vendor/chart.js/Chart.min.js')}}"></script>
-  <script src="{{asset('admin_asset/js/demo/chart-area-demo.js')}}"></script>  
+  <script src="{{asset('admin_asset/js/demo/chart-area-demo.js')}}"></script>
+  <!-- Page level plugins -->
+  <script src="{{asset('admin_asset/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('admin_asset/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
- 
+  <!-- Page level custom scripts -->
+  <script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable(); // ID From dataTable
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
+
 </body>
 
 </html>

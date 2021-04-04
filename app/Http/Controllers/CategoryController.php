@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class CategoryController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data=Category::latest()->get();
+       return view('admin.category.index',compact('data'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+     return view ('admin.category.create');
     }
 
     /**
@@ -35,7 +36,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+           'category'=>'required|unique:categories,category_name',
+           'slug'=>'required|unique:categories',
+       ]);
+      $res= Category::create(['category_name'=>$request->category,'slug'=>$request->slug]);
+      if($res){
+          return redirect()->route('category.index')->with('success',"category Inserted");
+      }else{
+          return redirect()->back()->with('erros','Something went wrong!!');
+      }
     }
 
     /**
@@ -57,7 +67,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $data=Category::findOrFail($category->id);
+        return view('admin.category.edit',compact('data'));
     }
 
     /**
@@ -69,7 +80,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+        $request->validate([
+            'category'=>'required|unique:categories,category_name,'.$category->id,
+            'slug'=>'required|unique:categories,slug,'.$category->id
+        ]);
+
+         $status=Category::where('id',$category->id)->update(['category_name'=>$request->category,'slug'=>$request->slug]);
+         if($status){
+            return redirect()->route('category.index')->with('success','Category Updated Successfully');
+        }else{
+         return redirect()->back()->with('error','Something went wrong!!');
+        }
+
     }
 
     /**
@@ -78,8 +101,15 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+
+   $res=Category::findOrFail($id);
+   $status=$res->delete();
+   if($status){
+       return redirect()->back()->with('success','Category Deleted Successfully');
+   }else{
+    return redirect()->back()->with('error','Something went wrong!!');
+   }
     }
 }

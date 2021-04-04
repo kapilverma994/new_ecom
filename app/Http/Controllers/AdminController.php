@@ -17,10 +17,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-    //     // dd(Hash::make('admin@123'));
+        // dd(Hash::make('admin@123'));
     //     $time=DB::table('admins')->first();
     //    //dd(Carbon::createFromFormat('Y-m-d H:i:s', $time->created_at)->format('Y-m-d'));
-  
+
     //    // dd($time->created_at);
 
     //    dd(Carbon::now()->format('Y-m-d')==Carbon::createFromFormat('Y-m-d H:i:s', $time->created_at)->format('Y-m-d'));
@@ -72,7 +72,7 @@ return redirect('admin/dashboard');
      */
     public function show()
     {
-       return view('admin.dashboard');  
+       return view('admin.dashboard');
     }
 
     /**

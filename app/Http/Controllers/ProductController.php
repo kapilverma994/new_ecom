@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -45,14 +46,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $request->validate([
-            'name'=>'required|unique:coupons,name',
-            'code'=>'required|unique:coupons,code',
-            'value'=>'required'
-        ]);
-       $res= Product::create(['name'=>$request->name,'code'=>$request->code,'value'=>$request->value]);
+$pro=new Product();
+
+
+$res=$pro->save();
        if($res){
            return redirect()->route('coupon.index')->with('success',"Coupon Created Successfully");
        }else{
@@ -79,8 +78,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $data=Coupon::findOrFail($coupon->id);
-        return view('admin.coupon.edit',compact('data'));
+        $data=Product::findOrFail($product->id);
+        return view('admin.product.edit',compact('data'));
     }
 
     /**

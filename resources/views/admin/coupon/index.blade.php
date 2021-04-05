@@ -1,5 +1,5 @@
 @extends('admin.layouts.master_layout')
-
+@section('title', 'Coupons')
 
 @section('admin_content')
 
@@ -37,8 +37,9 @@
                   <th>Name</th>
                   <th>Code</th>
                   <th>Value</th>
-                  <th>Created At</th>
                   <th>Status</th>
+                  <th>Created At</th>
+                  
                   <th>Action</th>
 
                 </tr>
@@ -49,8 +50,9 @@
                     <th>Name</th>
                     <th>Code</th>
                     <th>Value</th>
+                                <th>Status</th>
                     <th>Created At</th>
-                    <th>Status</th>
+        
                     <th>Action</th>
                 </tr>
               </tfoot>
@@ -76,6 +78,11 @@
             @method('delete')
             <button class="btn btn-danger" type="sumit">Delete </button>
         </form>
+        @if($item->status==1)
+        <a class="btn btn-success" href="{{url('admin/coupon/status/0',$item->id)}} ">Active</a>
+        @else 
+        <a class="btn btn-danger" href="{{url('admin/coupon/status/1',$item->id)}} ">Deactive</a>
+        @endif
 <a class="btn btn-warning" href="{{route('coupon.edit',$item->id)}}">Edit</a>
 
     </td>

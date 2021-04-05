@@ -1,7 +1,7 @@
 @extends('admin.layouts.master_layout')
 @section('title', 'Create Category')
 @section('admin_content')
-
+@section('page_active','active')
 
 <div class="container-fluid ">
 

@@ -1,7 +1,8 @@
 
      @extends('admin.layouts.master_layout')   
+     @section('title', 'Dashboard')
      @section('admin_content')
-         
+         @section('page_active','active')
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       

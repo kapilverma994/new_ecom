@@ -5,11 +5,11 @@
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">DataTables</h1>
+      <h1 class="h3 mb-0 text-gray-800">Sizes</h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./">Home</a></li>
         <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active" aria-current="page">DataTables</li>
+        <li class="breadcrumb-item active" aria-current="page">Sizes</li>
       </ol>
     </div>
 
@@ -26,8 +26,8 @@
         <div class="card mb-4">
 
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Category</h6>
-            <a  class="btn btn-success" href="{{route('category.create')}}">Add Category</a>
+            <h6 class="m-0 font-weight-bold text-primary">Size</h6>
+            <a  class="btn btn-success" href="{{route('size.create')}}">Add Size</a>
           </div>
           <div class="table-responsive p-3">
             <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -35,7 +35,7 @@
                 <tr>
                     <th>Sno</th>
                   <th>Name</th>
-                  <th>Slug</th>
+                  
                   <th>Created At</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -46,7 +46,7 @@
                 <tr>
                     <th>Sno</th>
                     <th>Name</th>
-                    <th>Slug</th>
+                  
 
                     <th>Created At</th>
                     <th>Status</th>
@@ -58,8 +58,8 @@
 @foreach ($data as $item)
 <tr>
     <td>{{$loop->iteration}}</td>
-    <td>{{$item->category_name}}</td>
-    <td>{{$item->slug}}</td>
+    <td>{{$item->size}}</td>
+
     <td>
         @if($item->status==1)
         <span class="badge badge-success">Active</span>
@@ -69,17 +69,17 @@
     </td>
     <td>{{$item->created_at->diffforhumans()}}</td>
     <td>
-        <form action="{{route('category.destroy',$item->id)}}" method="post" style="display:inline">
+        <form action="{{route('size.destroy',$item->id)}}" method="post" style="display:inline">
             @csrf
             @method('delete')
             <button class="btn btn-danger" type="sumit">Delete </button>
         </form>
         @if($item->status==1)
-        <a class="btn btn-success" href="{{url('admin/category/status/0',$item->id)}} ">Active</a>
+        <a class="btn btn-success" href="{{url('admin/size/status/0',$item->id)}} ">Active</a>
         @else 
-        <a class="btn btn-danger" href="{{url('admin/category/status/1',$item->id)}} ">Deactive</a>
+        <a class="btn btn-danger" href="{{url('admin/size/status/1',$item->id)}} ">Deactive</a>
         @endif
-<a class="btn btn-warning" href="{{route('category.edit',$item->id)}}">Edit</a>
+<a class="btn btn-warning" href="{{route('size.edit',$item->id)}}">Edit</a>
 
     </td>
 

@@ -69,7 +69,7 @@
     $(document).ready(function(){
     
  setInterval(() => {
-   $(".custom").slideUp();
+   $(".custom").slideUp(400);
  }, 2000);
     
     });

@@ -17,6 +17,17 @@ class CouponController extends Controller
         $data=Coupon::latest()->get();
         return view('admin.coupon.index',compact('data'));
     }
+    public function status($type,$id){
+
+            $res=Coupon::where('id',$id)->update(['status'=>$type]);
+            if($res){
+                return redirect()->back()->with('success','Coupon Updated Successfully');
+            }else{
+                return redirect()->back()->with('error','Oops Something Went Wrong!!');
+            }
+   
+
+    }
 
     /**
      * Show the form for creating a new resource.

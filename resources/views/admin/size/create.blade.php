@@ -1,12 +1,11 @@
 @extends('admin.layouts.master_layout')
-@section('title', 'Edit Category')
+@section('title', 'Create Size')
 @section('admin_content')
 @section('page_active','active')
 
-
 <div class="container-fluid ">
 
-<h1>Edit Catgegory</h1>
+<h1>Size</h1>
 <div class="row mt-5">
 
     <div class="col-lg-8">
@@ -16,27 +15,26 @@
           <h6 class="m-0 font-weight-bold text-primary"></h6>
         </div>
         <div class="card-body">
-          <form action="{{route('category.update',$data->id)}}" method="post">
-            @method('put')
+          <form action="{{route('size.store')}}" method="post">
             @csrf
             <div class="form-group">
-              <label for="exampleInputEmail1">Category Name</label>
-              <input type="text" name="category" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter Catgory Name" value="{{$data->category_name}}" autocomplete="off" required >
-                @error('category')
+              <label for="exampleInputEmail1">Size Name</label>
+              <input type="text" name="size" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter Size" autocomplete="off" required >
+                @error('size')
                 <span class="text-danger">  {{$message}}</span>
 
                 @enderror
 
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label for="exampleInputPassword1">Slug</label>
-              <input type="text" name="slug" value="{{$data->slug}}" class="form-control" id="exampleInputPassword1" placeholder="Slug" autocomplete="off" required>
+              <input type="text" name="slug" class="form-control" id="exampleInputPassword1" placeholder="Slug" autocomplete="off" required>
            @error('slug')
            <span class="text-danger">  {{$message}}</span>
 
               @enderror
-            </div>
+            </div> --}}
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

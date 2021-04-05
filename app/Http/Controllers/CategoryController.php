@@ -17,6 +17,15 @@ class CategoryController extends Controller
         $data=Category::latest()->get();
        return view('admin.category.index',compact('data'));
     }
+    public function status($type,$id){
+ $res=Category::where('id',$id)->update(['status'=>$type]);
+        if($res){
+            return redirect()->back()->with('success','Category Updated Successfully');
+        }else{
+            return redirect()->back()->with('error','Oops Something Went Wrong!!');
+        }
+
+}
 
     /**
      * Show the form for creating a new resource.

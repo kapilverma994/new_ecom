@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Size;
+use App\Models\Color;
 use Illuminate\Http\Request;
 
-class SizeController extends Controller
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,18 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $data=Size::latest()->get();
-       return view('admin.size.index',compact('data'));
+        $data=Color::latest()->get();
+        return view('admin.color.index',compact('data'));
     }
+    public function status($type,$id){
+        $res=Color::where('id',$id)->update(['status'=>$type]);
+               if($res){
+                   return redirect()->back()->with('success','Color Updated Successfully');
+               }else{
+                   return redirect()->back()->with('error','Oops Something Went Wrong!!');
+               }
+       
+       }
 
     /**
      * Show the form for creating a new resource.
@@ -25,17 +34,9 @@ class SizeController extends Controller
      */
     public function create()
     {
-        return view ('admin.size.create');
+        return view ('admin.color.create');
     }
-    public function status($type,$id){
-        $res=Size::where('id',$id)->update(['status'=>$type]);
-               if($res){
-                   return redirect()->back()->with('success','Size Updated Successfully');
-               }else{
-                   return redirect()->back()->with('error','Oops Something Went Wrong!!');
-               }
-       
-       }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,11 +46,11 @@ class SizeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'size'=>'required|unique:sizes,size',
+            'color'=>'required|unique:colors,color',
        ]);
-       $res= Size::create(['size'=>$request->size]);
+       $res= Color::create(['color'=>$request->color]);
        if($res){
-           return redirect()->route('size.index')->with('success',"Size Created Successfully");
+           return redirect()->route('color.index')->with('success',"Color Created Successfully");
        }else{
            return redirect()->back()->with('erros','Something went wrong!!');
        }
@@ -58,10 +59,10 @@ class SizeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Size  $size
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function show(Size $size)
+    public function show(Color $color)
     {
         //
     }
@@ -69,32 +70,32 @@ class SizeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Size  $size
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function edit(Size $size)
+    public function edit(Color $color)
     {
-        $data=Size::findOrFail($size->id);
-        return view('admin.size.edit',compact('data'));
+        $data=Color::findOrFail($color->id);
+        return view('admin.color.edit',compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Size  $size
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $size)
+    public function update(Request $request, Color $color)
     {
         $request->validate([
-            'size'=>'required|unique:sizes,size,'.$size->id,
+            'color'=>'required|unique:colors,color,'.$color->id,
        
         ]);
 
-         $status=Size::where('id',$size->id)->update(['size'=>$request->size]);
+         $status=Color::where('id',$color->id)->update(['color'=>$request->color]);
          if($status){
-            return redirect()->route('size.index')->with('success','Size Updated Successfully');
+            return redirect()->route('color.index')->with('success','Color Updated Successfully');
         }else{
          return redirect()->back()->with('error','Something went wrong!!');
         }
@@ -103,15 +104,15 @@ class SizeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Size  $size
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Size $size)
+    public function destroy(Color $color)
     {
-        $res=Size::findOrFail($size->id);
+        $res=Color::findOrFail($color->id);
         $status=$res->delete();
         if($status){
-            return redirect()->back()->with('success','Size Deleted Successfully');
+            return redirect()->back()->with('success','Color Deleted Successfully');
         }else{
          return redirect()->back()->with('error','Something went wrong!!');
         }

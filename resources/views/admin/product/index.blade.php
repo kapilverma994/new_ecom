@@ -1,15 +1,15 @@
 @extends('admin.layouts.master_layout')
-@section('page_active','active')
-@section('title', 'Categories')
+@section('title', 'Coupons')
+
 @section('admin_content')
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Sizes</h1>
+      <h1 class="h3 mb-0 text-gray-800">DataTables</h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./">Home</a></li>
         <li class="breadcrumb-item">Tables</li>
-        <li class="breadcrumb-item active" aria-current="page">Sizes</li>
+        <li class="breadcrumb-item active" aria-current="page">DataTables</li>
       </ol>
     </div>
 
@@ -26,8 +26,8 @@
         <div class="card mb-4">
 
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Size</h6>
-            <a  class="btn btn-success" href="{{route('size.create')}}">Add Size</a>
+            <h6 class="m-0 font-weight-bold text-primary">Coupon</h6>
+            <a  class="btn btn-success" href="{{route('coupon.create')}}">Add Coupon</a>
           </div>
           <div class="table-responsive p-3">
             <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -35,10 +35,11 @@
                 <tr>
                     <th>Sno</th>
                   <th>Name</th>
-                  
-              
+                  <th>Code</th>
+                  <th>Value</th>
                   <th>Status</th>
                   <th>Created At</th>
+                  
                   <th>Action</th>
 
                 </tr>
@@ -47,10 +48,11 @@
                 <tr>
                     <th>Sno</th>
                     <th>Name</th>
-                  
-                    <th>Status</th>
+                    <th>Code</th>
+                    <th>Value</th>
+                                <th>Status</th>
                     <th>Created At</th>
-                   
+        
                     <th>Action</th>
                 </tr>
               </tfoot>
@@ -59,8 +61,9 @@
 @foreach ($data as $item)
 <tr>
     <td>{{$loop->iteration}}</td>
-    <td>{{$item->size}}</td>
-
+    <td>{{$item->name}}</td>
+    <td>{{$item->code}}</td>
+    <td>{{$item->value}}</td>
     <td>
         @if($item->status==1)
         <span class="badge badge-success">Active</span>
@@ -70,17 +73,17 @@
     </td>
     <td>{{$item->created_at->diffforhumans()}}</td>
     <td>
-        <form action="{{route('size.destroy',$item->id)}}" method="post" style="display:inline">
+        <form action="{{route('coupon.destroy',$item->id)}}" method="post" style="display:inline">
             @csrf
             @method('delete')
             <button class="btn btn-danger" type="sumit">Delete </button>
         </form>
         @if($item->status==1)
-        <a class="btn btn-success" href="{{url('admin/size/status/0',$item->id)}} ">Active</a>
+        <a class="btn btn-success" href="{{url('admin/coupon/status/0',$item->id)}} ">Active</a>
         @else 
-        <a class="btn btn-danger" href="{{url('admin/size/status/1',$item->id)}} ">Deactive</a>
+        <a class="btn btn-danger" href="{{url('admin/coupon/status/1',$item->id)}} ">Deactive</a>
         @endif
-<a class="btn btn-warning" href="{{route('size.edit',$item->id)}}">Edit</a>
+<a class="btn btn-warning" href="{{route('coupon.edit',$item->id)}}">Edit</a>
 
     </td>
 

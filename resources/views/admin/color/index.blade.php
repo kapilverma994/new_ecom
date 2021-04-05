@@ -1,11 +1,11 @@
 @extends('admin.layouts.master_layout')
 @section('page_active','active')
-@section('title', 'Categories')
+@section('title', 'Colors')
 @section('admin_content')
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Sizes</h1>
+      <h1 class="h3 mb-0 text-gray-800">Colors</h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./">Home</a></li>
         <li class="breadcrumb-item">Tables</li>
@@ -26,8 +26,8 @@
         <div class="card mb-4">
 
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Size</h6>
-            <a  class="btn btn-success" href="{{route('size.create')}}">Add Size</a>
+            <h6 class="m-0 font-weight-bold text-primary">Color</h6>
+            <a  class="btn btn-success" href="{{route('color.create')}}">Add Color</a>
           </div>
           <div class="table-responsive p-3">
             <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -59,7 +59,7 @@
 @foreach ($data as $item)
 <tr>
     <td>{{$loop->iteration}}</td>
-    <td>{{$item->size}}</td>
+    <td>{{$item->color}}</td>
 
     <td>
         @if($item->status==1)
@@ -70,17 +70,17 @@
     </td>
     <td>{{$item->created_at->diffforhumans()}}</td>
     <td>
-        <form action="{{route('size.destroy',$item->id)}}" method="post" style="display:inline">
+        <form action="{{route('color.destroy',$item->id)}}" method="post" style="display:inline">
             @csrf
             @method('delete')
             <button class="btn btn-danger" type="sumit">Delete </button>
         </form>
         @if($item->status==1)
-        <a class="btn btn-success" href="{{url('admin/size/status/0',$item->id)}} ">Active</a>
+        <a class="btn btn-success" href="{{url('admin/color/status/0',$item->id)}} ">Active</a>
         @else 
-        <a class="btn btn-danger" href="{{url('admin/size/status/1',$item->id)}} ">Deactive</a>
+        <a class="btn btn-danger" href="{{url('admin/color/status/1',$item->id)}} ">Deactive</a>
         @endif
-<a class="btn btn-warning" href="{{route('size.edit',$item->id)}}">Edit</a>
+<a class="btn btn-warning" href="{{route('color.edit',$item->id)}}">Edit</a>
 
     </td>
 

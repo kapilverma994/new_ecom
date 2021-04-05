@@ -64,6 +64,53 @@
           </div>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm1" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Size</span>
+        </a>
+        <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <a class="collapse-item" href="{{route('size.create')}}">Add Size</a>
+            <a class="collapse-item" href="{{route('size.index')}}">View Size</a>
+          </div>
+        </div>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm2" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Color</span>
+        </a>
+        <div id="collapseForm2" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <a class="collapse-item" href="{{route('color.create')}}">Add Color</a>
+            <a class="collapse-item" href="{{route('color.index')}}">View Color</a>
+          </div>
+        </div>
+      </li>
+     
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm3" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Product</span>
+        </a>
+        <div id="collapseForm3" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <a class="collapse-item" href="{{route('product.create')}}">Add Product</a>
+            <a class="collapse-item" href="{{route('product.index')}}">View Product</a>
+          </div>
+        </div>
+      </li>
+     
+     
+    
      
     
       <hr class="sidebar-divider">

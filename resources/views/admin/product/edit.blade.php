@@ -1,11 +1,11 @@
 @extends('admin.layouts.master_layout')
-@section('title', 'Edit Category')
+@section('title', ' Create Product')
 @section('admin_content')
 
 
 <div class="container-fluid ">
 
-<h1>Edit Catgegory</h1>
+<h1>Product</h1>
 <div class="row mt-5">
 
     <div class="col-lg-8">
@@ -15,35 +15,91 @@
           <h6 class="m-0 font-weight-bold text-primary"></h6>
         </div>
         <div class="card-body">
-          <form action="{{route('coupon.update',$data->id)}}" method="post">
-            @method('put')
+          <form action="{{route('product.edit',$data->id)}}" method="post">
             @csrf
             <div class="form-group">
-                <label for="exampleInputEmail1">Coupon Name</label>
-                <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  placeholder="Enter Catgory Name" autocomplete="off" required  value="{{$data->name}}">
-                  @error('coupon')
-                  <span class="text-danger">  {{$message}}</span>
+              <label for="exampleInputEmail1"> Name</label>
+              <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter Product Name" value="{{$data->name}}" autocomplete="off" required >
+                @error('name')
+                <span class="text-danger">  {{$message}}</span>
 
-                  @enderror
+                @enderror
 
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Image</label>
+              <input type="file" name="image" value="{{$data->image}}" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+           @error('image')
+           <span class="text-danger">  {{$message}}</span>
+
+              @enderror
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Category</label>
+                <input type="text" name="category" value="{{$data->category_id}}" class="form-control" id="exampleInputPassword1" placeholder="Enter category" autocomplete="off" required>
+             @error('category')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+    
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Code</label>
-                <input type="text" name="code" class="form-control" id="exampleInputPassword1" value="{{$data->code}}" placeholder="Enter code" autocomplete="off" required>
-             @error('code')
+                <label for="exampleInputPassword1">Brand</label>
+                <input type="text" name="brand" class="form-control" value="{{$data->brand_id}}" id="exampleInputPassword1" placeholder="Enter brand" autocomplete="off" required>
+             @error('brand')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
               </div>
               <div class="form-group">
-                  <label for="exampleInputPassword1">Value</label>
-                  <input type="text" name="value" class="form-control" id="exampleInputPassword1" value="{{$data->value}}" placeholder="Enter value" autocomplete="off" required>
-               @error('value')
-               <span class="text-danger">  {{$message}}</span>
+                <label for="exampleInputPassword1">Keywords </label>
+                <input type="text" name="keyword" value="{{$data->keywords}}" class="form-control" id="exampleInputPassword1" placeholder="Enter keyword" autocomplete="off" required>
+             @error('keyword')
+             <span class="text-danger">  {{$message}}</span>
 
-                  @enderror
-                </div>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Uses </label>
+                <input type="text" name="uses" value="{{$data->uses}}" class="form-control" id="exampleInputPassword1" placeholder="Enter uses" autocomplete="off" required>
+             @error('uses')
+             <span class="text-danger">{{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Warranty </label>
+                <input type="text" name="warranty" value="{{$data->warranty}}" class="form-control" id="exampleInputPassword1" placeholder="Enter warranty" autocomplete="off" required>
+             @error('warranty')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Short Description</label>
+      <textarea name="short_desc" class="form-control" id="" cols="30" rows="5">{{$data->short_desc}}</textarea>
+             @error('short_desc')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Description</label>
+      <textarea name="description" class="form-control" id="" cols="30" rows="8">{{$data->description}}</textarea>
+             @error('description')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Specification</label>
+      <textarea name="tech_spec" class="form-control" id="" cols="30" rows="8">{{$data->tech_spec}}</textarea>
+             @error('tech_spec')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

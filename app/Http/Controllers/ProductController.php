@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     /**
@@ -37,7 +38,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $cats=Category::latest()->get();
+        
+        return view('admin.product.create',compact('cats'));
     }
 
     /**
@@ -48,12 +51,22 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-$pro=new Product();
-
-
+     $pro=new Product();
+$pro->name=$request->name;
+$slug=Str::of($pro->name)->slug('-');
+$pro->slug=$slug;
+$pro->category_id=$request->category;
+$pro->brand_id=$request->brand;
+$pro->short_desc=$request->short_desc;
+$pro->description=$request->description;
+$pro->tech_spec=$request->tech_spec;
+$pro->uses=$request->uses;
+$pro->warranty=$request->warranty;
+$pro->keywords=$request->keyword;
+$pro->image=$request->image;
 $res=$pro->save();
        if($res){
-           return redirect()->route('coupon.index')->with('success',"Coupon Created Successfully");
+           return redirect()->route('product.index')->with('success',"Product Created Successfully");
        }else{
            return redirect()->back()->with('erros','Something went wrong!!');
        }

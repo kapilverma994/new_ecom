@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class CreateProductsTable extends Migration
 {
@@ -17,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('slug');
+         
             $table->integer('brand_id');
             $table->string('name');
              $table->longText('short_desc');

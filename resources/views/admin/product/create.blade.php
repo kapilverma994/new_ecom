@@ -20,7 +20,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1"> Name</label>
               <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter Catgory Name" autocomplete="off" required >
+                placeholder="Enter Product Name" autocomplete="off" required >
                 @error('name')
                 <span class="text-danger">  {{$message}}</span>
 
@@ -28,17 +28,74 @@
 
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Code</label>
-              <input type="text" name="code" class="form-control" id="exampleInputPassword1" placeholder="Enter code" autocomplete="off" required>
-           @error('code')
+              <label for="exampleInputPassword1">Image</label>
+              <input type="file" name="image" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+           @error('image')
            <span class="text-danger">  {{$message}}</span>
 
               @enderror
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Value</label>
-                <input type="text" name="value" class="form-control" id="exampleInputPassword1" placeholder="Enter value" autocomplete="off" required>
-             @error('value')
+       
+                <select name="category" class="form-control" id="" required>
+                  <option value="">Choose Category</option>
+                  @foreach($cats as $cat)
+<option value="{{$cat->id}}">{{$cat->category_name}}</option>
+@endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Brand</label>
+                <input type="text" name="brand" class="form-control" id="exampleInputPassword1" placeholder="Enter brand" autocomplete="off" required>
+             @error('brand')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Keywords </label>
+                <input type="text" name="keyword" class="form-control" id="exampleInputPassword1" placeholder="Enter keyword" autocomplete="off" required>
+             @error('keyword')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Uses </label>
+                <input type="text" name="uses" class="form-control" id="exampleInputPassword1" placeholder="Enter uses" autocomplete="off" required>
+             @error('uses')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Warranty </label>
+                <input type="text" name="warranty" class="form-control" id="exampleInputPassword1" placeholder="Enter warranty" autocomplete="off" required>
+             @error('warranty')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Short Description</label>
+      <textarea name="short_desc" class="form-control" id="" cols="30" rows="5"></textarea>
+             @error('short_desc')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Description</label>
+      <textarea name="description" class="form-control" id="" cols="30" rows="8"></textarea>
+             @error('description')
+             <span class="text-danger">  {{$message}}</span>
+
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Specification</label>
+      <textarea name="tech_spec" class="form-control" id="" cols="30" rows="8"></textarea>
+             @error('tech_spec')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror

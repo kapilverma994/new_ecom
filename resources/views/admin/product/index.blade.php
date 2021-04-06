@@ -83,7 +83,7 @@
         @else 
         <a class="btn btn-danger" href="{{url('admin/coupon/status/1',$item->id)}} ">Deactive</a>
         @endif
-<a class="btn btn-warning" href="{{route('coupon.edit',$item->id)}}">Edit</a>
+<a class="btn btn-warning" href="{{route('product.edit',$item->id)}}">Edit</a>
 
     </td>
 

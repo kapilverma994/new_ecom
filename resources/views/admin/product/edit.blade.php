@@ -37,12 +37,17 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Category</label>
-                <input type="text" name="category" value="{{$data->category_id}}" class="form-control" id="exampleInputPassword1" placeholder="Enter category" autocomplete="off" required>
+             
              @error('category')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-    
+                <select name="category" class="form-control" id="" required>
+                  <option value="">Choose Category</option>
+                  @foreach($cats as $cat)
+<option value="{{$cat->id}}" {{(($data->category_id==$cat->id)? 'selected' : '')}} >{{$cat->category_name}}</option>
+@endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Brand</label>

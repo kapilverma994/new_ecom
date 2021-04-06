@@ -92,7 +92,8 @@ $res=$pro->save();
     public function edit(Product $product)
     {
         $data=Product::findOrFail($product->id);
-        return view('admin.product.edit',compact('data'));
+        $cats=Category::latest()->get();
+        return view('admin.product.edit',compact('data','cats'));
     }
 
     /**

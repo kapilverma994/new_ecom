@@ -15,7 +15,7 @@
           <h6 class="m-0 font-weight-bold text-primary"></h6>
         </div>
         <div class="card-body">
-          <form action="{{route('product.store')}}" method="post">
+          <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
               <label for="exampleInputEmail1"> Name</label>

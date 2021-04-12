@@ -78,7 +78,21 @@
           </div>
         </div>
       </li>
-     
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm5" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Brand</span>
+        </a>
+        <div id="collapseForm5" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <a class="collapse-item" href="{{route('brand.create')}}">Add Brand</a>
+            <a class="collapse-item" href="{{route('brand.index')}}">View Brand</a>
+          </div>
+        </div>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm2" aria-expanded="true"
           aria-controls="collapseForm">
@@ -93,7 +107,7 @@
           </div>
         </div>
       </li>
-     
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm3" aria-expanded="true"
           aria-controls="collapseForm">
@@ -108,15 +122,15 @@
           </div>
         </div>
       </li>
-     
-     
-    
-     
-    
+
+
+
+
+
       <hr class="sidebar-divider">
-      
- 
-  
+
+
+
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>

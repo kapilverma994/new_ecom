@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -39,8 +40,9 @@ class ProductController extends Controller
     public function create()
     {
         $cats=Category::latest()->get();
-        
-        return view('admin.product.create',compact('cats'));
+        $brands=Brand::latest()->get();
+
+        return view('admin.product.create',compact('cats','brands'));
     }
 
     /**
@@ -58,12 +60,19 @@ $pro->slug=$slug;
 $pro->category_id=$request->category;
 $pro->brand_id=$request->brand;
 $pro->short_desc=$request->short_desc;
-$pro->description=$request->description;
-$pro->tech_spec=$request->tech_spec;
-$pro->uses=$request->uses;
-$pro->warranty=$request->warranty;
-$pro->keywords=$request->keyword;
-$pro->image=$request->image;
+// $pro->description=$request->description;
+// $pro->tech_spec=$request->tech_spec;
+// $pro->uses=$request->uses;
+// $pro->warranty=$request->warranty;
+// $pro->keywords=$request->keyword;
+
+if($request->hasFile('image')){
+   $image_ext=$request->image->getClientOriginalExtension();
+  $image_id=hexdec(uniqid()).'.'.$image_ext;
+  $request->image->storeAs('product_images', $image_id, 'public');
+  $pro->image=$image_id;
+}
+
 $res=$pro->save();
        if($res){
            return redirect()->route('product.index')->with('success',"Product Created Successfully");

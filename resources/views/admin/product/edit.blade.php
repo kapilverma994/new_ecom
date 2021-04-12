@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Image</label>
-              <input type="file" name="image" value="{{$data->image}}" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+              <input type="file" name="image" value="{{$data->image}}" class="form-control" id="exampleInputPassword1" autocomplete="off" >
            @error('image')
            <span class="text-danger">  {{$message}}</span>
 
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Category</label>
-             
+
              @error('category')
              <span class="text-danger">  {{$message}}</span>
 
@@ -57,30 +57,30 @@
 
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Keywords </label>
                 <input type="text" name="keyword" value="{{$data->keywords}}" class="form-control" id="exampleInputPassword1" placeholder="Enter keyword" autocomplete="off" required>
              @error('keyword')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Uses </label>
                 <input type="text" name="uses" value="{{$data->uses}}" class="form-control" id="exampleInputPassword1" placeholder="Enter uses" autocomplete="off" required>
              @error('uses')
              <span class="text-danger">{{$message}}</span>
 
                 @enderror
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Warranty </label>
                 <input type="text" name="warranty" value="{{$data->warranty}}" class="form-control" id="exampleInputPassword1" placeholder="Enter warranty" autocomplete="off" required>
              @error('warranty')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
+              </div> --}}
               <div class="form-group">
                 <label for="exampleInputPassword1">Short Description</label>
       <textarea name="short_desc" class="form-control" id="" cols="30" rows="5">{{$data->short_desc}}</textarea>
@@ -89,22 +89,22 @@
 
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Description</label>
       <textarea name="description" class="form-control" id="" cols="30" rows="8">{{$data->description}}</textarea>
              @error('description')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Specification</label>
       <textarea name="tech_spec" class="form-control" id="" cols="30" rows="8">{{$data->tech_spec}}</textarea>
              @error('tech_spec')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
+              </div> --}}
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

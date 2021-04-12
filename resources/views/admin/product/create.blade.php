@@ -29,14 +29,14 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Image</label>
-              <input type="file" name="image" class="form-control" id="exampleInputPassword1" autocomplete="off" required>
+              <input type="file" name="image" class="form-control" id="exampleInputPassword1" autocomplete="off" >
            @error('image')
            <span class="text-danger">  {{$message}}</span>
 
               @enderror
             </div>
             <div class="form-group">
-       
+
                 <select name="category" class="form-control" id="" required>
                   <option value="">Choose Category</option>
                   @foreach($cats as $cat)
@@ -45,37 +45,43 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Brand</label>
-                <input type="text" name="brand" class="form-control" id="exampleInputPassword1" placeholder="Enter brand" autocomplete="off" required>
+
+                <select name="brand" class="form-control" id="" required>
+                  <option value="">Choose Brand</option>
+                  @foreach($brands as $brand)
+<option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+@endforeach
+                </select>
+
              @error('brand')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Keywords </label>
                 <input type="text" name="keyword" class="form-control" id="exampleInputPassword1" placeholder="Enter keyword" autocomplete="off" required>
              @error('keyword')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Uses </label>
                 <input type="text" name="uses" class="form-control" id="exampleInputPassword1" placeholder="Enter uses" autocomplete="off" required>
              @error('uses')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Warranty </label>
                 <input type="text" name="warranty" class="form-control" id="exampleInputPassword1" placeholder="Enter warranty" autocomplete="off" required>
              @error('warranty')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
+              </div> --}}
               <div class="form-group">
                 <label for="exampleInputPassword1">Short Description</label>
       <textarea name="short_desc" class="form-control" id="" cols="30" rows="5"></textarea>
@@ -84,22 +90,22 @@
 
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Description</label>
       <textarea name="description" class="form-control" id="" cols="30" rows="8"></textarea>
              @error('description')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
-              <div class="form-group">
+              </div> --}}
+              {{-- <div class="form-group">
                 <label for="exampleInputPassword1">Specification</label>
       <textarea name="tech_spec" class="form-control" id="" cols="30" rows="8"></textarea>
              @error('tech_spec')
              <span class="text-danger">  {{$message}}</span>
 
                 @enderror
-              </div>
+              </div> --}}
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

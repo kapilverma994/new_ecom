@@ -27,12 +27,12 @@ class ProductRequest extends FormRequest
            'name'=>'required',
            'category'=>'required',
            'brand'=>'required',
-           'keyword'=>'required',
-           'uses'=>'required',
-           'warranty'=>'required',
+        //    'keyword'=>'required',
+        //    'uses'=>'required',
+        //    'warranty'=>'required',
            'short_desc'=>'required',
-           'description'=>'required',
-           'tech_spec'=>'required',
+        //    'description'=>'required',
+        //    'tech_spec'=>'required',
         ];
     }
 }

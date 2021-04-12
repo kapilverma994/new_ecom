@@ -1,6 +1,6 @@
 @extends('admin.layouts.master_layout')
-@section('title', 'Coupons')
-
+@section('page_active','active')
+@section('title', 'Categories')
 @section('admin_content')
 
 <div class="container-fluid" id="container-wrapper">
@@ -26,22 +26,18 @@
         <div class="card mb-4">
 
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Product</h6>
-            <a  class="btn btn-success" href="{{route('product.create')}}">Add Product</a>
+            <h6 class="m-0 font-weight-bold text-primary">Category</h6>
+            <a  class="btn btn-success" href="{{route('category.create')}}">Add Category</a>
           </div>
           <div class="table-responsive p-3">
             <table class="table align-items-center table-flush table-hover" id="dataTableHover">
               <thead class="thead-light">
                 <tr>
                     <th>Sno</th>
-                    <th>Image</th>
-                    <th>Product Name</th>
-              <th>Category</th>
-                <th>Brand</th>
-                  <th>Description</th>
-                  <th>Status</th>
+                  <th>Name</th>
+                  <th>Slug</th>
                   <th>Created At</th>
-
+                  <th>Status</th>
                   <th>Action</th>
 
                 </tr>
@@ -49,16 +45,12 @@
               <tfoot>
                 <tr>
                     <th>Sno</th>
-                    <th>Image</th>
-                    <th>Product Name</th>
-              <th>Category</th>
-                <th>Brand</th>
-                  <th>Description</th>
-                  <th>Status</th>
-                  <th>Created At</th>
+                    <th>Name</th>
+                    <th>Slug</th>
 
-                  <th>Action</th>
-
+                    <th>Created At</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
               </tfoot>
               <tbody>
@@ -66,11 +58,8 @@
 @foreach ($data as $item)
 <tr>
     <td>{{$loop->iteration}}</td>
-    <td><img src="{{asset('storage/product_images/'.$item->image)}}" width="100px" height="100px" alt=""></td>
-    <td>{{$item->name}}</td>
-    <td>{{$item->get_cat->category_name}}</td>
-    <td>{{$item->get_brand->brand_name}}</td>
-    <td>{{$item->short_desc}}</td>
+    <td>{{$item->category_name}}</td>
+    <td>{{$item->slug}}</td>
     <td>
         @if($item->status==1)
         <span class="badge badge-success">Active</span>
@@ -80,17 +69,17 @@
     </td>
     <td>{{$item->created_at->diffforhumans()}}</td>
     <td>
-        <form action="{{route('coupon.destroy',$item->id)}}" method="post" style="display:inline">
+        <form action="{{route('category.destroy',$item->id)}}" method="post" style="display:inline">
             @csrf
             @method('delete')
             <button class="btn btn-danger" type="sumit">Delete </button>
         </form>
         @if($item->status==1)
-        <a class="btn btn-success" href="{{url('admin/product/status/0',$item->id)}} ">Active</a>
-        @else
-        <a class="btn btn-danger" href="{{url('admin/product/status/1',$item->id)}} ">Deactive</a>
+        <a class="btn btn-success" href="{{url('admin/category/status/0',$item->id)}} ">Active</a>
+        @else 
+        <a class="btn btn-danger" href="{{url('admin/category/status/1',$item->id)}} ">Deactive</a>
         @endif
-<a class="btn btn-warning" href="{{route('product.edit',$item->id)}}">Edit</a>
+<a class="btn btn-warning" href="{{route('category.edit',$item->id)}}">Edit</a>
 
     </td>
 

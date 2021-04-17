@@ -17,6 +17,7 @@
         <div class="card-body">
           <form action="{{route('product.edit',$data->id)}}" method="post">
             @csrf
+   @method('PUT')
             <div class="form-group">
               <label for="exampleInputEmail1"> Name</label>
               <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -35,9 +36,12 @@
 
               @enderror
             </div>
-            <div class="form-group">
+            <div class="row">
+
+
+            <div class="form-group col-md-6">
                 <label for="exampleInputPassword1">Category</label>
-             
+
              @error('category')
              <span class="text-danger">  {{$message}}</span>
 
@@ -49,7 +53,7 @@
 @endforeach
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group col-md-6">
                 <label for="exampleInputPassword1">Brand</label>
                 <input type="text" name="brand" class="form-control" value="{{$data->brand_id}}" id="exampleInputPassword1" placeholder="Enter brand" autocomplete="off" required>
              @error('brand')
@@ -57,6 +61,8 @@
 
                 @enderror
               </div>
+            </div>
+
               <div class="form-group">
                 <label for="exampleInputPassword1">Keywords </label>
                 <input type="text" name="keyword" value="{{$data->keywords}}" class="form-control" id="exampleInputPassword1" placeholder="Enter keyword" autocomplete="off" required>

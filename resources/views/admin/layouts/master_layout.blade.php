@@ -78,7 +78,7 @@
           </div>
         </div>
       </li>
-     
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm2" aria-expanded="true"
           aria-controls="collapseForm">
@@ -93,7 +93,7 @@
           </div>
         </div>
       </li>
-     
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm3" aria-expanded="true"
           aria-controls="collapseForm">
@@ -108,15 +108,15 @@
           </div>
         </div>
       </li>
-     
-     
-    
-     
-    
+
+
+
+
+
       <hr class="sidebar-divider">
-      
- 
-  
+
+
+
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>
@@ -352,6 +352,8 @@
       $('#dataTableHover').DataTable(); // ID From dataTable with Hover
     });
   </script>
+
+  @yield('scripts')
 
 </body>
 

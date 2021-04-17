@@ -39,7 +39,7 @@
                   <th>Value</th>
                   <th>Status</th>
                   <th>Created At</th>
-                  
+
                   <th>Action</th>
 
                 </tr>
@@ -52,7 +52,7 @@
                     <th>Value</th>
                                 <th>Status</th>
                     <th>Created At</th>
-        
+
                     <th>Action</th>
                 </tr>
               </tfoot>
@@ -79,9 +79,9 @@
             <button class="btn btn-danger" type="sumit">Delete </button>
         </form>
         @if($item->status==1)
-        <a class="btn btn-success" href="{{url('admin/coupon/status/0',$item->id)}} ">Active</a>
-        @else 
-        <a class="btn btn-danger" href="{{url('admin/coupon/status/1',$item->id)}} ">Deactive</a>
+        <a class="btn btn-success" href="{{url('admin/product/status/0',$item->id)}} ">Active</a>
+        @else
+        <a class="btn btn-danger" href="{{url('admin/product/status/1',$item->id)}} ">Deactive</a>
         @endif
 <a class="btn btn-warning" href="{{route('product.edit',$item->id)}}">Edit</a>
 
